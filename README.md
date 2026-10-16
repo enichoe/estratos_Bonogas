@@ -18,3 +18,6 @@
 Pulsa «Activar seguimiento» y permite la ubicación. El mapa se centra al caminar y consulta el servicio de estratos aproximadamente cada 8 segundos cuando te desplazas al menos 10 metros. El punto azul indica posición aproximada; la precisión depende del dispositivo. Pulsa «Detener» para apagar el seguimiento.
 
 IMPORTANTE: en celulares se requiere HTTPS (por ejemplo, despliegue en Vercel); localhost también es válido. En una URL http:// con IP de red local el navegador puede bloquear GPS. Mantén la pestaña abierta y en primer plano; navegadores pueden suspender GPS en segundo plano. Los datos de estratos provienen del GIS publicado, NO se actualizan en tiempo real: lo que se actualiza es tu ubicación y la consulta. La consulta depende de que el servidor permita Identify/CORS y de que haya capas y datos disponibles. No certifica elegibilidad.
+
+## Visor ArcGIS adicional (etapa 1.2)
+La pestaña «Visor ArcGIS adicional» integra la aplicación indicada por el usuario mediante un iframe. Se ofrece un enlace para abrirla directamente si ArcGIS o el publicador impiden mostrarla dentro de otra web. Su contenido y sus permisos no están bajo el control de GeoBonoGas. El GPS y la consulta de estratos del proyecto funcionan en la pestaña «GeoBonoGas + GPS», no dentro del visor externo. Se añadió el footer «Desarrollado por ED TECH».

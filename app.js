@@ -72,3 +72,20 @@ require(['esri/Map','esri/views/MapView','esri/layers/MapImageLayer','esri/widge
  stopButton.addEventListener('click',stopTracking);
  view.when(()=>console.info('GeoBonoGas listo')).catch(console.error);
 });
+
+// El visor ArcGIS externo está aislado en un iframe: no se puede controlar su GPS
+// ni consultar sus capas desde GeoBonoGas sin una API o permisos del propietario.
+(() => {
+ const own=document.getElementById('tabGeo'),external=document.getElementById('tabExternal');
+ const map=document.getElementById('viewDiv'),panel=document.getElementById('externalPanel');
+ const frame=document.getElementById('externalFrame');
+ function switchTab(showExternal){
+   own.classList.toggle('active',!showExternal);external.classList.toggle('active',showExternal);
+   own.setAttribute('aria-pressed',String(!showExternal));external.setAttribute('aria-pressed',String(showExternal));
+   map.hidden=showExternal;panel.hidden=!showExternal;
+   if(showExternal&&!frame.src)frame.src=frame.dataset.src;
+   // El visor propio sigue montado y conserva su estado al regresar.
+ }
+ own.addEventListener('click',()=>switchTab(false));
+ external.addEventListener('click',()=>switchTab(true));
+})();
