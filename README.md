@@ -1,0 +1,20 @@
+# GeoBonoGas — prototipo etapa 1
+
+## Inicio
+1. Abre esta carpeta en VS Code.
+2. Instala la extensión Live Server o ejecuta `python -m http.server 5500` desde esta carpeta.
+3. Abre `http://localhost:5500`.
+4. Comprueba los mensajes del panel de servicios y la consola (F12).
+
+## Notas
+- La cartografía base requiere Internet y puede tener condiciones de uso o autenticación de Esri.
+- Las URL de Cálidda y Osinergmin son servicios externos. Su disponibilidad, permisos de uso y acceso CORS no están garantizados.
+- La visualización de estratos requiere identificar las subcapas, fechas y campos apropiados. Este prototipo agrega el MapServer general y no aplica aún simbología socioeconómica propia.
+- No muestra cobertura certificada ni elegibilidad BonoGas.
+- No almacena información de personas ni direcciones consultadas.
+
+
+## Seguimiento GPS (etapa 1.1)
+Pulsa «Activar seguimiento» y permite la ubicación. El mapa se centra al caminar y consulta el servicio de estratos aproximadamente cada 8 segundos cuando te desplazas al menos 10 metros. El punto azul indica posición aproximada; la precisión depende del dispositivo. Pulsa «Detener» para apagar el seguimiento.
+
+IMPORTANTE: en celulares se requiere HTTPS (por ejemplo, despliegue en Vercel); localhost también es válido. En una URL http:// con IP de red local el navegador puede bloquear GPS. Mantén la pestaña abierta y en primer plano; navegadores pueden suspender GPS en segundo plano. Los datos de estratos provienen del GIS publicado, NO se actualizan en tiempo real: lo que se actualiza es tu ubicación y la consulta. La consulta depende de que el servidor permita Identify/CORS y de que haya capas y datos disponibles. No certifica elegibilidad.
