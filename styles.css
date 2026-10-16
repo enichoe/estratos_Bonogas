@@ -5,3 +5,16 @@
 /* Navegación entre el visor propio y la aplicación ArcGIS externa */
 :root{--footer-h:36px}.layout{height:calc(100dvh - 70px - var(--footer-h))}.map-area{flex:1;min-width:0;min-height:0;display:flex;flex-direction:column}.map-tabs{display:flex;gap:8px;padding:8px 12px;background:#eaf1f8;border-bottom:1px solid #d7e0ec}.map-tabs button{font-size:13px;padding:8px 12px;background:#64748b}.map-tabs button.active{background:#176ac4}.map-stage{position:relative;flex:1;min-height:0}#viewDiv{width:100%;height:100%}.external-panel{position:absolute;inset:0;background:white;display:flex;flex-direction:column}.external-panel[hidden]{display:none}.external-note{padding:10px 12px;font-size:12px;background:#f5f8fc;line-height:1.5}.external-note a{color:#176ac4;font-weight:650}.external-panel iframe{flex:1;width:100%;border:0;min-height:0}footer{height:var(--footer-h);display:flex;justify-content:center;align-items:center;background:#12345b;color:white;font-size:12px;letter-spacing:.3px}footer strong{margin-left:4px}
 @media(max-width:650px){.layout{height:calc(100dvh - 82px - var(--footer-h))}.map-area{min-height:65%}.map-tabs{padding:6px;gap:5px}.map-tabs button{font-size:11px;padding:8px}.external-note span{display:none}}
+
+/* Panel de capas plegable en teléfonos */
+.sidebar-toggle{display:none}.external-gps{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:7px}.external-gps button{padding:7px 10px;font-size:12px}.external-gps span{font-size:12px;color:#334155}
+@media(max-width:700px){
+ .layout{position:relative;display:block;height:calc(100dvh - 82px - var(--footer-h))}
+ .map-area{height:100%;min-height:0}.map-stage{min-height:0}
+ .sidebar-toggle{display:block;position:absolute;z-index:15;top:53px;left:10px;box-shadow:0 2px 12px #0003;padding:9px 12px}
+ aside{position:absolute;z-index:14;top:0;left:0;width:min(340px,92vw);max-width:none;height:100%;max-height:none;overflow:auto;transform:translateX(-105%);transition:transform .2s ease;box-shadow:2px 0 14px #0002;padding:64px 16px 16px}
+ aside.is-open{transform:translateX(0)}
+ .map-tabs{padding:6px 6px 6px 145px;overflow-x:auto}.map-tabs button{flex-shrink:0}
+ .external-note{padding:7px}.external-gps{gap:5px}.external-gps span{font-size:11px}
+}
+@media(min-width:701px){aside{max-width:320px}}

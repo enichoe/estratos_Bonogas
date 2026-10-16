@@ -25,6 +25,7 @@ require(['esri/Map','esri/views/MapView','esri/layers/MapImageLayer','esri/widge
  document.getElementById('refresh').addEventListener('click',()=>SOURCES.forEach(connect));
  const legend=new Legend({view});view.ui.add(new Expand({view,content:legend,expandIcon:'legend',expanded:false}), 'bottom-left');
  const locateButton=document.getElementById('locate'),stopButton=document.getElementById('stopLocate');
+ window.geoBonoStartGPS=()=>locateButton.click();
  const locationStatus=document.getElementById('locationStatus'),zoneInfo=document.getElementById('zoneInfo');
  let watchId=null,lastQueryAt=0,lastQueryPosition=null,querySequence=0,follow=true;
  const marker=new Graphic({symbol:{type:'simple-marker',style:'circle',size:13,color:'#1478e8',outline:{color:'#fff',width:3}}});
@@ -88,4 +89,22 @@ require(['esri/Map','esri/views/MapView','esri/layers/MapImageLayer','esri/widge
  }
  own.addEventListener('click',()=>switchTab(false));
  external.addEventListener('click',()=>switchTab(true));
+})();
+
+// Panel móvil y acceso al seguimiento desde la pestaña externa.
+(() => {
+ const sidebar=document.getElementById('sidebar');
+ const toggle=document.getElementById('sidebarToggle');
+ toggle.addEventListener('click',()=>{
+   const open=sidebar.classList.toggle('is-open');
+   toggle.setAttribute('aria-expanded',String(open));
+   toggle.textContent=open?'✕ Cerrar panel':'☰ Capas y GPS';
+ });
+ document.getElementById('externalGps').addEventListener('click',()=>{
+   // Los iframes de otro origen no permiten centrar su mapa por JavaScript.
+   // Cambiamos al mapa controlado por GeoBonoGas y activamos allí el GPS.
+   document.getElementById('tabGeo').click();
+   window.geoBonoStartGPS?.();
+   document.getElementById('externalGpsStatus').textContent='Seguimiento iniciado en GeoBonoGas.';
+ });
 })();

@@ -21,3 +21,11 @@ IMPORTANTE: en celulares se requiere HTTPS (por ejemplo, despliegue en Vercel); 
 
 ## Visor ArcGIS adicional (etapa 1.2)
 La pestaña «Visor ArcGIS adicional» integra la aplicación indicada por el usuario mediante un iframe. Se ofrece un enlace para abrirla directamente si ArcGIS o el publicador impiden mostrarla dentro de otra web. Su contenido y sus permisos no están bajo el control de GeoBonoGas. El GPS y la consulta de estratos del proyecto funcionan en la pestaña «GeoBonoGas + GPS», no dentro del visor externo. Se añadió el footer «Desarrollado por ED TECH».
+
+
+## Versión 1.3: uso móvil y GPS
+- En pantallas de hasta 700 px, pulsa **☰ Capas y GPS** para abrir/cerrar el panel lateral.
+- La pestaña del visor ArcGIS adicional es un iframe de un sitio de terceros: **no es posible controlar su centro, su GPS ni consultar sus capas** desde nuestra aplicación sin acceso a su WebMap/servicios y permisos adecuados.
+- Por eso el botón **Seguir mi ubicación** de la pestaña externa abre el mapa propio GeoBonoGas y activa el seguimiento allí; **no** posiciona el visor externo.
+- Para seguimiento GPS con las capas del visor adicional dentro de un solo mapa es necesario identificar su WebMap y las URL de sus capas, y confirmar que el servidor permite su uso.
+- Para ubicación en teléfonos, publicar mediante HTTPS y autorizar geolocalización.
