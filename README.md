@@ -36,3 +36,9 @@ El visor cuenta con una pantalla de autenticación previa antes del ingreso al s
 - **Contraseña:** `ArribaAlianza@`
 - El enlace de "Abrir en otra pestaña" del visor externo ha quedado deshabilitado (comentado en código).
 
+## Consulta de Solicitudes MasiGas (Osinergmin)
+- Se integró el acceso a la consulta oficial de habilitaciones de gas natural (`https://masigas.osinergmin.gob.pe/gnr-web/pages/public/consultaSolicitud`).
+- Se activa tanto desde la barra de pestañas (**«📋 Consulta Solicitud MasiGas ↗»**) como desde el panel lateral (**«Habilitaciones BonoGas»**).
+- Se abre en una ventana auxiliar controlada y centrada, permitiendo realizar la consulta sin recargar ni cerrar el mapa, el GPS o la sesión activa de GeoBonoGas.
+
+

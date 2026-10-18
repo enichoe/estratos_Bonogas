@@ -182,3 +182,26 @@ require(['esri/Map','esri/views/MapView','esri/layers/MapImageLayer','esri/widge
     });
   }
 })();
+
+// Apertura controlada de la consulta de solicitudes MasiGas (Osinergmin)
+(() => {
+  function openMasigasPopup() {
+    const url = 'https://masigas.osinergmin.gob.pe/gnr-web/pages/public/consultaSolicitud';
+    const width = Math.min(1080, window.screen.availWidth - 50);
+    const height = Math.min(800, window.screen.availHeight - 50);
+    const left = Math.max(0, Math.round((window.screen.availWidth - width) / 2));
+    const top = Math.max(0, Math.round((window.screen.availHeight - height) / 2));
+    const features = `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes,status=no,toolbar=no,menubar=no,location=no`;
+
+    const popup = window.open(url, 'MasiGasVentanaAuxiliar', features);
+    if (popup) {
+      popup.focus();
+    } else {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  }
+
+  document.getElementById('btnMasigas')?.addEventListener('click', openMasigasPopup);
+  document.getElementById('sidebarMasigas')?.addEventListener('click', openMasigasPopup);
+})();
+

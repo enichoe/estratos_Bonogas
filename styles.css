@@ -26,6 +26,47 @@
 .logout-btn{background:#e11d48;color:#fff;border:0;border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer;font-weight:600;transition:background .2s}
 .logout-btn:hover{background:#be123c}
 
+/* Botones para MasiGas Osinergmin */
+.btn-masigas-tab{
+  margin-left:auto;
+  background:#064992 !important;
+  color:#fff !important;
+  border:0;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-weight:600;
+  cursor:pointer;
+  transition:background .2s, transform .1s;
+}
+.btn-masigas-tab:hover{
+  background:#03346b !important;
+}
+.btn-masigas-tab:active{
+  transform:scale(.98);
+}
+.btn-masigas-action{
+  width:100%;
+  background:#064992;
+  color:#fff;
+  border:0;
+  border-radius:8px;
+  padding:11px 14px;
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  transition:background .2s, transform .1s;
+}
+.btn-masigas-action:hover{
+  background:#03346b;
+}
+.btn-masigas-action:active{
+  transform:scale(.99);
+}
+
 /* Pantalla de autenticación previa obligatoria */
 .login-overlay{
   position:fixed;
