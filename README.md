@@ -29,3 +29,10 @@ La pestaña «Visor ArcGIS adicional» integra la aplicación indicada por el us
 - Por eso el botón **Seguir mi ubicación** de la pestaña externa abre el mapa propio GeoBonoGas y activa el seguimiento allí; **no** posiciona el visor externo.
 - Para seguimiento GPS con las capas del visor adicional dentro de un solo mapa es necesario identificar su WebMap y las URL de sus capas, y confirmar que el servidor permite su uso.
 - Para ubicación en teléfonos, publicar mediante HTTPS y autorizar geolocalización.
+
+## Autenticación de Acceso
+El visor cuenta con una pantalla de autenticación previa antes del ingreso al sistema:
+- **Usuario:** `enichoe@gmail.com`
+- **Contraseña:** `ArribaAlianza@`
+- El enlace de "Abrir en otra pestaña" del visor externo ha quedado deshabilitado (comentado en código).
+

@@ -108,3 +108,77 @@ require(['esri/Map','esri/views/MapView','esri/layers/MapImageLayer','esri/widge
    document.getElementById('externalGpsStatus').textContent='Seguimiento iniciado en GeoBonoGas.';
  });
 })();
+
+// Autenticación obligatoria previa para el acceso a GeoBonoGas
+(() => {
+  const REQUIRED_USER = 'enichoe@gmail.com';
+  const REQUIRED_PASS = 'ArribaAlianza@';
+  const AUTH_KEY = 'geobonogas_auth_session';
+
+  const overlay = document.getElementById('loginOverlay');
+  const form = document.getElementById('loginForm');
+  const emailInput = document.getElementById('loginEmail');
+  const passInput = document.getElementById('loginPassword');
+  const errorBox = document.getElementById('loginError');
+  const togglePassBtn = document.getElementById('togglePassword');
+  const userSession = document.getElementById('userSession');
+  const logoutBtn = document.getElementById('logoutBtn');
+
+  function setAuthenticated(isAuth) {
+    if (isAuth) {
+      if (overlay) overlay.style.display = 'none';
+      if (userSession) userSession.style.display = 'flex';
+    } else {
+      if (overlay) overlay.style.display = 'flex';
+      if (userSession) userSession.style.display = 'none';
+      if (passInput) passInput.value = '';
+      if (errorBox) {
+        errorBox.style.display = 'none';
+        errorBox.textContent = '';
+      }
+      setTimeout(() => emailInput?.focus(), 100);
+    }
+  }
+
+  // Verificar estado al cargar
+  const hasSession = sessionStorage.getItem(AUTH_KEY) === 'true';
+  setAuthenticated(hasSession);
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const enteredEmail = (emailInput.value || '').trim().toLowerCase();
+      const enteredPass = passInput.value || '';
+
+      if (enteredEmail === REQUIRED_USER.toLowerCase() && enteredPass === REQUIRED_PASS) {
+        sessionStorage.setItem(AUTH_KEY, 'true');
+        setAuthenticated(true);
+      } else {
+        if (errorBox) {
+          errorBox.textContent = 'Usuario o contraseña incorrectos. Verifique sus credenciales.';
+          errorBox.style.display = 'block';
+        }
+        if (passInput) {
+          passInput.value = '';
+          passInput.focus();
+        }
+      }
+    });
+  }
+
+  if (togglePassBtn && passInput) {
+    togglePassBtn.addEventListener('click', () => {
+      const isPass = passInput.type === 'password';
+      passInput.type = isPass ? 'text' : 'password';
+      togglePassBtn.textContent = isPass ? '🙈' : '👁️';
+      togglePassBtn.setAttribute('aria-label', isPass ? 'Ocultar contraseña' : 'Mostrar contraseña');
+    });
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      sessionStorage.removeItem(AUTH_KEY);
+      setAuthenticated(false);
+    });
+  }
+})();

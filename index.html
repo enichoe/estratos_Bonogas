@@ -11,12 +11,65 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Pantalla de autenticación previa obligatoria -->
+    <div id="loginOverlay" class="login-overlay">
+      <div class="login-card">
+        <div class="login-header">
+          <div class="login-logo-icon">🗺️</div>
+          <h2>GeoBonoGas</h2>
+          <p>Visor GIS Interno · Acceso Restringido</p>
+        </div>
+        <form id="loginForm" novalidate autocomplete="on">
+          <div id="loginError" class="login-error" role="alert" style="display:none;"></div>
+          <div class="login-field">
+            <label for="loginEmail">Usuario / Correo</label>
+            <input
+              type="email"
+              id="loginEmail"
+              name="username"
+              placeholder="ejemplo@correo.com"
+              autocomplete="username"
+              required
+            />
+          </div>
+          <div class="login-field">
+            <label for="loginPassword">Contraseña</label>
+            <div class="password-input-wrap">
+              <input
+                type="password"
+                id="loginPassword"
+                name="password"
+                placeholder="••••••••"
+                autocomplete="current-password"
+                required
+              />
+              <button type="button" id="togglePassword" class="toggle-password" aria-label="Mostrar u ocultar contraseña">
+                👁️
+              </button>
+            </div>
+          </div>
+          <button type="submit" id="loginSubmit" class="login-btn">
+            Iniciar sesión
+          </button>
+        </form>
+        <div class="login-footer">
+          <small>Credenciales requeridas para consultar el visor</small>
+        </div>
+      </div>
+    </div>
+
     <header>
       <div>
         <strong>GeoBonoGas</strong
         ><small>Visor GIS interno · Lima y Callao</small>
       </div>
-      <span>Consulta referencial, no certifica elegibilidad</span>
+      <div class="header-right">
+        <span>Consulta referencial, no certifica elegibilidad</span>
+        <div id="userSession" class="user-session" style="display:none;">
+          <span id="userEmailBadge" class="user-badge">enichoe@gmail.com</span>
+          <button id="logoutBtn" type="button" class="logout-btn" title="Cerrar sesión">Salir</button>
+        </div>
+      </div>
     </header>
     <div class="layout">
       <button
@@ -76,12 +129,14 @@
               </div>
               Visor oficial externo de ArcGIS · se muestra tal como lo publica
               su propietario.
+              <!-- Enlace para abrir en otra pestaña deshabilitado:
               <a
                 href="https://www.arcgis.com/apps/instant/basic/index.html?appid=4e92f3f73a64481daf0fca1560a484c7"
                 target="_blank"
                 rel="noopener noreferrer"
                 >Abrir en otra pestaña ↗</a
-              ><span>
+              >
+              --><span>
                 Si no aparece, el sitio podría restringir su inserción.</span
               >
             </div>
